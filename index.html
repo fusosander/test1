@@ -1,13 +1,104 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-	<meta name = "viewpoint" content = "width = device - width, initial - scale = 1.0">
-	<title>新北市立聯合醫院管灌示範</title>
-    </head>
-    <body>
-        <p>管灌示範</p>
-	 <p>12jfljefjefj</p>
-    </body>
-	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新北市立聯合醫院</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #content {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        #video-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>管灌示範</h1>
+
+<select id="dropdown">
+    <option value="">請選擇一個選項</option>
+    <option value="DRUG_1">DRUG_1</option>
+    <option value="DRUG_2">DRUG_2</option>    
+	<option value="DRUG_3">DRUG_3</option>
+
+</select>
+
+<div id="content">
+    <!-- 用於顯示選擇的內容 -->
+    請選擇一個選項以顯示相應的內容。
+</div>
+
+<div id="video-container"></div>
+
+<script>
+    // 定義選項對應的內容物件
+    var contentMap = {
+        DRUG_1: "DRUG_1 內容自行更改",
+        DRUG_2: "DRUG_2 內容自行更改",
+        DRUG_3: "DRUG_awflijfiw 內容自行更改"
+    };
+
+    // 獲取下拉式選單元素
+    var dropdown = document.getElementById('dropdown');
+    // 獲取顯示內容的區域元素
+    var content = document.getElementById('content');
+    // 獲取播放影片的容器元素
+    var videoContainer = document.getElementById('video-container');
+
+    // 當下拉式選單選擇內容發生變化時觸發
+    dropdown.addEventListener('change', function() {
+        // 獲取選擇的值
+        var selectedValue = dropdown.value;
+        // 獲取選擇的選項對應的文字內容
+        var selectedContent = contentMap[selectedValue];
+        // 更新顯示內容
+        content.textContent = selectedContent;
+
+        // 清空影片容器內的內容
+        videoContainer.innerHTML = '';
+
+        // 如果選擇了 "DRUG_1"
+        if (selectedValue === 'DRUG_1') {
+            // 嵌入 YouTube 影片
+            var videoEmbed = document.createElement('iframe');
+            videoEmbed.setAttribute('width', '560');
+            videoEmbed.setAttribute('height', '315');
+            videoEmbed.setAttribute('src', 'https://www.youtube.com/embed/FOuSxal8pf4');
+            videoEmbed.setAttribute('allowfullscreen', '');
+            videoContainer.appendChild(videoEmbed);
+        }
+        // 如果選擇了 "DRUG_2"
+        else if (selectedValue === 'DRUG_2') {
+            // 嵌入 Google Drive 影片
+            var videoEmbed = document.createElement('iframe');
+            videoEmbed.setAttribute('width', '560');
+            videoEmbed.setAttribute('height', '315');
+            videoEmbed.setAttribute('src', 'https://drive.google.com/file/d/1J5DOJDbQn6SqUEcNETwW3rSlKJ1csSwM/preview');
+            videoContainer.appendChild(videoEmbed);
+        }
+	 else if (selectedValue === 'DRUG_3') {
+            // 嵌入 Google Drive 影片
+            var videoEmbed = document.createElement('iframe');
+            videoEmbed.setAttribute('width', '560');
+            videoEmbed.setAttribute('height', '315');
+            videoEmbed.setAttribute('src', 'https://drive.google.com/file/d/1o6zqaroztZ6MKEhuN6VGWyFGqyK903-6/preview');
+            videoContainer.appendChild(videoEmbed);
+        }
+    });
+</script>
+
+</body>
 </html>
